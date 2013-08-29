@@ -1,20 +1,15 @@
 #! /usr/bin/env ruby
+require './node'
+require './vim_node'
 
-require 'stringio'
+at_exit {`./term.sh`}
 
-def slow_print str
-  StringIO.new(str).each_char do |chr|
-    print chr
-    sleep 0.05
-  end
-end
+START_NODE = ARGV[0] || :n1
 
-`./term.sh hugemistake.png`
-slow_print "hi, what's your name? "
-`./term.sh IMG_1394.JPG`
+Env      = {}
+Env[:n4] = VimNode.new("vimfile.txt", "118-pr1.jpg", "goto node VIM node", [:n1])
+Env[:n2] = Node.new("I'm node 2", "118-pr1.jpg", "goto node 2", [:n1])
+Env[:n3] = Node.new("I'm node 3", "arrested_development.jpg", "goto node 3", [:n2])
+Env[:n1] = Node.new("hi, what's your name? ", "hugemistake.png", "goto node 1", [:n2, :n3, :n4])
 
-mark = gets
-slow_print "nice to meet you, #{mark}"
-
-# Exciting motivation!?
-# this is the universal talk
+Env[START_NODE].show
