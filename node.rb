@@ -18,23 +18,33 @@ class Node
     @background.display
     @texts.ghost
     show_next_options
+    go next_choice
   end
 
-  def show_next_options
-    puts "=========================="
-    letters = %w(a b c d e f g h i j k)
-    @next_nodes.each_with_index do |node_sym, i| 
-      Env[node_sym].next_text.ghost
-      print " (#{letters[i]})"
-      print "\n"
-    end
+  def letters
+    %w(a b c d e f g h i j k)
+  end
+
+  def next_choice
     print "Where do you want to go?: "
     unless next_node_ind = letters.index(gets.chomp)
       puts "Let's try that again"
       show_next_options
     end
-    next_choice_sym = @next_nodes[next_node_ind]
-    Env[next_choice_sym].show
+    @next_nodes[next_node_ind]
+  end
+
+  def show_next_options
+    puts "=========================="
+    @next_nodes.each_with_index do |node_sym, i| 
+      Env[node_sym].next_text.ghost
+      print " (#{letters[i]})"
+      print "\n"
+    end
+  end
+
+  def go next_node_sym
+    Env[next_node_sym].show
   end
 
   module Background

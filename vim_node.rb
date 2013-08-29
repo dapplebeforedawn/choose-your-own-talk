@@ -9,5 +9,6 @@ class VimNode < Node
     @background.display
     Process.wait spawn("vim", @filename)
     show_next_options
+    go next_choice
   end
 end
