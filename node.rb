@@ -5,13 +5,13 @@ class Node
   attr_accessor :next_text
   def initialize texts, background=nil, next_text="", next_nodes=[]
     @texts      = [texts].flatten #force an array
-    @background =  background
+    @background = background
     @next_nodes = next_nodes
     @next_text  = next_text
 
-    @texts.extend(GhostWriterCollection)
-    @next_text.extend(GhostWriter)
-    @background.extend(Background)
+    @texts.extend       GhostWriterCollection
+    @next_text.extend   GhostWriter
+    @background.extend  Background
   end
 
   def show
