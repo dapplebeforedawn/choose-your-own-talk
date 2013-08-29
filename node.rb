@@ -21,31 +21,34 @@ class Node
     go next_choice
   end
 
-  def letters
-    %w(a b c d e f g h i j k)
-  end
-
-  def next_choice
-    print "Where do you want to go?: "
-    unless next_node_ind = letters.index(gets.chomp)
-      puts "Let's try that again"
-      show_next_options
+  module Transitions
+    def letters
+      %w(a b c d e f g h i j k)
     end
-    @next_nodes[next_node_ind]
-  end
 
-  def show_next_options
-    puts "=========================="
-    @next_nodes.each_with_index do |node_sym, i| 
-      Env[node_sym].next_text.ghost
-      print " (#{letters[i]})"
-      print "\n"
+    def next_choice
+      print "Where do you want to go?: "
+      unless next_node_ind = letters.index($stdin.gets.chomp) #bare `gets` will try to consume ARGV too
+        puts "Let's try that again"
+        show_next_options
+      end
+      @next_nodes[next_node_ind]
+    end
+
+    def show_next_options
+      puts "=========================="
+      @next_nodes.each_with_index do |node_sym, i| 
+        Env[node_sym].next_text.ghost
+        print " (#{letters[i]})"
+        print "\n"
+      end
+    end
+
+    def go next_node_sym
+      Env[next_node_sym].show
     end
   end
-
-  def go next_node_sym
-    Env[next_node_sym].show
-  end
+  include Transitions
 
   module Background
     def display

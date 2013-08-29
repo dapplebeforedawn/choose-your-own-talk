@@ -4,7 +4,7 @@ require './vim_node'
 
 at_exit {`./term.sh`}
 
-START_NODE = ARGV[0] || :n1
+START_NODE = (ARGV[0] || :n1).to_sym
 
 Env      = {}
 Env[:n4] = VimNode.new("vimfile.txt", "118-pr1.jpg", "goto node VIM node", [:n1])
