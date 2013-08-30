@@ -42,6 +42,7 @@ class Node
     end
 
     def go next_node_sym
+      NODESTACK << next_node_sym # incase of problems
       Env[next_node_sym].show
     end
   end
