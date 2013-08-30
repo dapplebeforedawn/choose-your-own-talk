@@ -1,5 +1,5 @@
 class Node
-  GHOST_SPEED = 0.02
+  GHOST_SPEED = 0.002
   require 'stringio'
 
   attr_accessor :next_text
@@ -14,12 +14,18 @@ class Node
 
   module Transitions
     def letters
-      %w(a b c d e f g h i j k)
+      ('a'..'z').to_a
+    end
+    
+    def toc
+      'toc'
     end
 
     def next_choice
       print "Where do you want to go?: "
-      unless next_node_ind = letters.index($stdin.gets.chomp) #bare `gets` will try to consume ARGV too
+      input = $stdin.gets.chomp #bare `gets` will try to consume ARGV too
+      return TOC_NODE if input == toc
+      unless next_node_ind = letters.index(input)
         puts "Let's try that again"
         show_next_options
       end

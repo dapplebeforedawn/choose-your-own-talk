@@ -4,18 +4,29 @@ Dir[File.join(File.dirname(__FILE__), "lib", "*.rb")].each { |file| require file
 
 at_exit {`./term.sh`}
 
-START_NODE = (ARGV[0] || :n1).to_sym
+START_NODE = (ARGV[0] || :n0).to_sym
+TOC_NODE   = :toc
 
-Env      = {}
-Env[:n5] = MarkdownNode.new "sample.markdown", 
-            background: "Buster_bluth.jpg", next_text: "Show me a markdown file", next_nodes: [:n1]
-Env[:n4] = VimNode.new "vimfile.txt", 
-            background: "118-pr1.jpg", next_text: "goto node VIM node", next_nodes: [:n1]
-Env[:n2] = TextNode.new "I'm node 2", 
-            background: "118-pr1.jpg", next_text: "goto node 2", next_nodes: [:n1]
-Env[:n3] = TextNode.new "I'm node 3", 
-            background: "arrested_development.jpg", next_text: "goto node 3", next_nodes: [:n2]
-Env[:n1] = TextNode.new "hi, what's your name? ", 
-            background: "hugemistake.png", next_text: "goto node 1", next_nodes: [:n2, :n3, :n4, :n5]
+Env       = {}
+
+Env[:n5]  = MarkdownNode.new "without_rails.markdown", 
+            background: "", next_text: "Ruby, without the rails", next_nodes: []
+
+Env[:n4]  = MarkdownNode.new "hardware_toys.markdown", 
+            background: "", next_text: "Hardware hacking", next_nodes: []
+
+#tuatology
+Env[:n3]  = MarkdownNode.new "face_detection_in_ruby.markdown", 
+            background: "", next_text: "Face detection in ruby", next_nodes: []
+
+Env[:n1]  = MarkdownNode.new "keep_learning.markdown", 
+            background: "", next_text: "Keep learning", next_nodes: [:n3, :n4, :n5]
+
+#hugemistake
+Env[:n0]  = MarkdownNode.new "about.markdown", 
+            background: "", next_text: "The Beginning", next_nodes: [:n1]
+
+Env[:toc] = TextNode.new "Table of Contents: ", 
+            background: "", next_text: "Table of contents", next_nodes: Env.keys
 
 Env[START_NODE].show
