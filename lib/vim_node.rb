@@ -2,7 +2,7 @@ class VimNode < Node
 
   def initialize filename, options={}
     super options
-    @filename = filename
+    @filename = Pathname.new("codes").join filename
   end
 
   def show

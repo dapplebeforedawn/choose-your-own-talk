@@ -6,7 +6,7 @@ at_exit {p NODESTACK; `./term.sh`}
 
 START_NODE  = (ARGV[0] || :n0).to_sym
 TOC_NODE    = :toc
-NODESTACK   = [] # so we can rescue of the program blows up
+NODESTACK   = [] # so we can rescue if the program blows up
 PLACEHOLDER = "not finished yet"
 Env         = {}
 
@@ -17,11 +17,11 @@ Env[:n4]  = MarkdownNode.new "hardware_toys.markdown",
             background: "", next_text: "Hardware hacking", next_nodes: []
 
 
-Env[:n3a] = TextNode.new PLACEHOLDER, 
-            background: "", next_text: "a program to detect faces", next_nodes: []
+Env[:n3a] = VimNode.new "facedetect-1.rb", 
+            background: "", next_text: "A program to detect faces", next_nodes: []
 
 Env[:n3]  = TextNode.new PLACEHOLDER, 
-            background: "", next_text: "ruby-c extensions", next_nodes: []
+            background: "", next_text: "Ruby-c extensions", next_nodes: [:n3a]
 #tuatology
 Env[:n2]  = MarkdownNode.new "face_detection_in_ruby.markdown", 
             background: "", next_text: "Face detection in ruby", next_nodes: [:n3, :n3a]
