@@ -1,7 +1,7 @@
 class VimNode < Node
 
-  def initialize filename, background=nil, next_text="", next_nodes=[]
-    super
+  def initialize filename, options={}
+    super options
     @filename = filename
   end
 
@@ -11,4 +11,5 @@ class VimNode < Node
     show_next_options
     go next_choice
   end
+
 end

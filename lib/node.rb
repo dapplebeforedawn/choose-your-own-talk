@@ -3,22 +3,13 @@ class Node
   require 'stringio'
 
   attr_accessor :next_text
-  def initialize texts, background=nil, next_text="", next_nodes=[]
-    @texts      = [texts].flatten #force an array
-    @background = background
-    @next_nodes = next_nodes
-    @next_text  = next_text
+  def initialize options={}
+    @background = options[:background] || nil
+    @next_nodes = options[:next_nodes] || [] 
+    @next_text  = options[:next_text]  || "" 
 
-    @texts.extend       GhostWriterCollection
-    @next_text.extend   GhostWriter
-    @background.extend  Background
-  end
-
-  def show
-    @background.display
-    @texts.ghost
-    show_next_options
-    go next_choice
+    @next_text.extend  GhostWriter
+    @background.extend Background
   end
 
   module Transitions
