@@ -17,7 +17,7 @@ Env[:n4]  = MarkdownNode.new "hardware_toys.markdown",
             background: "", next_text: "Hardware hacking", next_nodes: []
 
 
-Env[:n3a] = VimNode.new "facedetect-1", session: true,
+Env[:n3a] = VimNode.new "facedetect", session: "facedetect-1.session",
             background: "", next_text: "A program to detect faces", next_nodes: []
 
 Env[:n3]  = TextNode.new PLACEHOLDER, 
