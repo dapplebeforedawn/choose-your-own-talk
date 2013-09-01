@@ -41,7 +41,7 @@ map ,gh :CtrlP app/helpers<F5>
 map ,gm :CtrlP app/models<F5>
 map ,gc :CtrlP app/controllers<F5>
 map ,gv :CtrlP app/views<F5>
-vnoremap <silent> ,r :call RubyRangeRun()
+map ,r :! ./facedetect-2.rb; open fd2-output.jpg
 map ,c :CoffeeCompile 10
 map H gT
 map L gt
@@ -125,15 +125,20 @@ set window=0
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/choose_your_own/codes/facedetect-1
+cd ~/choose_your_own/codes/facedetect
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 facedetect-1.rb
-badd +0 notes.markdown
-silent! argdel *
-edit facedetect-1.rb
+badd +4 facedetect-1.rb
+badd +13 ~/ruby_cv/one.rb
+badd +1 facedetect-2.rb
+badd +31 ~/ruby_cv/many.rb
+badd +1 notes-1.markdown
+badd +1 notes
+badd +2 notes-2.markdown
+args facedetect-1.rb
+edit facedetect-2.rb
 set splitbelow splitright
 wincmd _ | wincmd |
 split
@@ -143,8 +148,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 18 + 19) / 38)
-exe '2resize ' . ((&lines * 17 + 19) / 38)
+exe '1resize ' . ((&lines * 19 + 21) / 42)
+exe '2resize ' . ((&lines * 20 + 21) / 42)
 argglobal
 nnoremap <buffer> <silent> g} :exe        "ptjump =RubyCursorIdentifier()"
 nnoremap <buffer> <silent> } :exe          "ptag =RubyCursorIdentifier()"
@@ -174,7 +179,7 @@ setlocal cryptmethod=
 setlocal nocursorbind
 setlocal nocursorcolumn
 setlocal nocursorline
-setlocal define=
+setlocal define=^\\s*#\\s*define
 setlocal dictionary=
 setlocal nodiff
 setlocal equalprg=
@@ -238,7 +243,7 @@ setlocal noshortname
 setlocal nosmartindent
 setlocal softtabstop=2
 setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellcapcheck=
 setlocal spellfile=
 setlocal spelllang=en
 setlocal statusline=
@@ -249,7 +254,7 @@ if &syntax != 'ruby'
 setlocal syntax=ruby
 endif
 setlocal tabstop=2
-setlocal tags=~/choose_your_own/.git/tags,./tags,tags
+setlocal tags=~/choose_your_own/.git/ruby.tags,~/choose_your_own/.git/tags,./tags,tags
 setlocal textwidth=0
 setlocal thesaurus=
 setlocal noundofile
@@ -257,15 +262,17 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 1 - ((0 * winheight(0) + 9) / 18)
+15
+normal zo
+let s:l = 21 - ((18 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+21
+normal! 022l
 wincmd w
 argglobal
-edit notes.markdown
+edit notes-2.markdown
 setlocal autoindent
 setlocal nobinary
 setlocal bufhidden=
@@ -362,15 +369,16 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-let s:l = 2 - ((1 * winheight(0) + 8) / 17)
+let s:l = 9 - ((8 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-2
-normal! 07l
+9
+normal! 051l
 wincmd w
-exe '1resize ' . ((&lines * 18 + 19) / 38)
-exe '2resize ' . ((&lines * 17 + 19) / 38)
+2wincmd w
+exe '1resize ' . ((&lines * 19 + 21) / 42)
+exe '2resize ' . ((&lines * 20 + 21) / 42)
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
