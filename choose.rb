@@ -7,7 +7,7 @@ at_exit {p NODESTACK; `./term.sh`}
 START_NODE  = (ARGV[0] || :n0).to_sym
 TOC_NODE    = :toc
 NODESTACK   = [] # so we can rescue if the program blows up
-PLACEHOLDER = "not finished yet"
+PLACEHOLDER = "This node hasn't been made yet.  Please fork me and add it!"
 Env         = {}
 
 Env[:n5]  = MarkdownNode.new "without_rails.markdown", 
@@ -36,4 +36,5 @@ Env[:n0]  = MarkdownNode.new "about.markdown",
 Env[:toc] = TextNode.new "Table of Contents: ", 
             background: "", next_text: "Table of contents", next_nodes: Env.keys
 
+NODESTACK << START_NODE
 Env[START_NODE].show

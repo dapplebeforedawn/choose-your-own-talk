@@ -13,18 +13,19 @@ class Node
   end
 
   module Transitions
+    TOC  = 'toc'
+    BACK = 'back'
+
     def letters
       ('a'..'z').to_a
-    end
-    
-    def toc
-      'toc'
     end
 
     def next_choice
       print "Where do you want to go?: "
       input = $stdin.gets.chomp #bare `gets` will try to consume ARGV too
-      return TOC_NODE if input == toc
+      return TOC_NODE            if input == TOC
+      return NODESTACK.pop(2)[0] if input == BACK
+      
       unless next_node_ind = letters.index(input)
         puts "Let's try that again"
         show_next_options
