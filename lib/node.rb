@@ -4,12 +4,14 @@ class Node
 
   attr_accessor :next_text
   def initialize options={}
-    @background = options[:background] || nil
-    @next_nodes = options[:next_nodes] || [] 
-    @next_text  = options[:next_text]  || "" 
+    @parting_words = options[:parting_words] || "" 
+    @background    = options[:background]    || nil
+    @next_nodes    = options[:next_nodes]    || [] 
+    @next_text     = options[:next_text]     || "" 
 
-    @next_text.extend  GhostWriter
-    @background.extend Background
+    @next_text.extend     GhostWriter
+    @parting_words.extend GhostWriter
+    @background.extend    Background
   end
 
   module Transitions
@@ -34,6 +36,8 @@ class Node
     end
 
     def show_next_options
+      @parting_words.ghost
+      print "\n"
       puts "=========================="
       @next_nodes.each_with_index do |node_sym, i| 
         Env[node_sym].next_text.ghost

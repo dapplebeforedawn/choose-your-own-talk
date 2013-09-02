@@ -17,14 +17,21 @@ Env[:n4]  = MarkdownNode.new "hardware_toys.markdown",
             background: "", next_text: "Hardware hacking", next_nodes: []
 
 
-Env[:n3c] = TextNode.new PLACEHOLDER,
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "Better IPC", next_nodes: []
+Env[:n3e] = TextNode.new PLACEHOLDER,
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "How about a live image?", next_nodes: []
 
 Env[:n3c] = TextNode.new PLACEHOLDER,
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "Learning How to learn OpenCV in Ruby", next_nodes: []
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "Better IPC", next_nodes: [:n3e]
+
+Env[:n3f] = WebNode.new "https://github.com/ruby-opencv/ruby-opencv#sample-code",
+            parting_words: "The doucments for the ruby-opencv project aren't going to be much help. \nBut that's OK.",
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "What documentation is available?", next_nodes: []
+
+Env[:n3d] = TextNode.new PLACEHOLDER,
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "Learning How to learn OpenCV in Ruby", next_nodes: [:n3f]
 
 Env[:n3b] = VimNode.new "facedetect", session: "facedetect-2.session",
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "Ugh, shelling out.", next_nodes: [:n3c]
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "Ugh, shelling out.", next_nodes: [:n3d]
 
 Env[:n3a] = VimNode.new "facedetect", session: "facedetect-1.session",
             background: "ghost-in-the-shell-fingers.jpg", next_text: "A simple program to detect faces", next_nodes: [:n3b, :n3c]
