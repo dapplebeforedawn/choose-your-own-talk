@@ -11,3 +11,10 @@ I've make a huge mistake.
 ===================
 
 This is for ages 8 to 80.  No one leaves frustrated.  No one leaves bored.
+
+# Special Guest Appearances (w/o permission) by:
+================================================
+- Ruby Buddha
+- Jim Weirich
+- Ghost in the Shell Robots
+

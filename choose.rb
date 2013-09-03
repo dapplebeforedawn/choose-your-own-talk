@@ -7,7 +7,6 @@ at_exit {p NODESTACK; `./term.sh`}
 START_NODE  = (ARGV[0] || :n0).to_sym
 TOC_NODE    = :toc
 NODESTACK   = [] # so we can rescue if the program blows up
-PLACEHOLDER = "This node hasn't been made yet.  Please fork me and add it!"
 Env         = {}
 
 Env[:n5]  = MarkdownNode.new "without_rails.markdown", 
@@ -16,31 +15,48 @@ Env[:n5]  = MarkdownNode.new "without_rails.markdown",
 Env[:n4]  = MarkdownNode.new "hardware_toys.markdown", 
             background: "", next_text: "Hardware hacking", next_nodes: []
 
+Env[:g01] = MarkdownNode.new "what-is-arity.markdown",
+            parting_words: "Type 'back'",
+            background: "jim.png", next_text: "What's 'arity'?", next_nodes: []
 
-Env[:n3e] = TextNode.new PLACEHOLDER,
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "How about a live image?", next_nodes: []
+Env[:g02] = VimNode.new "working-with-bytes/working-with-bytes.markdown",
+            parting_words: "Type 'back'",
+            background: "jim.png", next_text: "Working with Bytes", next_nodes: []
 
-Env[:n3c] = TextNode.new PLACEHOLDER,
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "Better IPC", next_nodes: [:n3e]
+Env[:p01] = VimNode.new "Process-spawn",
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "Process.spawn", next_nodes: []
+
+Env[:n3e] = VimNode.new "facedetect", session: "facedetect-4.session",
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz movie?", next_nodes: [:p01])
+#next, pipeline, process span, io pipes, redirection, array pack--|
+#                                                                 |-bits/bytes/chars
+
+Env[:n3e] = VimNode.new "facedetect", session: "facedetect-3.session",
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz live image?", next_nodes: [:p01, :g02, :ne3]
+
+Env[:n3h] = PendingNode.new(
+            background: "", next_text: "Writing Ruby-c extensions", next_nodes: [])
+
+Env[:n3g] = WebNode.new "https://github.com/ruby-opencv/ruby-opencv/search?q=add_weighted&ref=cmdform",
+            parting_words: "Use the general OpenCV documentation available for the C library (there's tons).\nGrep the ruby-opencv library for how it's implemented in Ruby.\nBe careful for differences in arity.",
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "Grep the source like a boss", next_nodes: [:g01, :n3h, :n3e]
 
 Env[:n3f] = WebNode.new "https://github.com/ruby-opencv/ruby-opencv#sample-code",
             parting_words: "The doucments for the ruby-opencv project aren't going to be much help. \nBut that's OK.",
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "What documentation is available?", next_nodes: []
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "What documentation is available?", next_nodes: [:n3g]
 
-Env[:n3d] = TextNode.new PLACEHOLDER,
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "Learning How to learn OpenCV in Ruby", next_nodes: [:n3f]
+Env[:n3d] = MarkdownNode.new "open-cv-docs.markdown",
+            background: "leongersing.png", next_text: "Learning How to learn OpenCV in Ruby", next_nodes: [:n3f]
 
 Env[:n3b] = VimNode.new "facedetect", session: "facedetect-2.session",
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "Ugh, shelling out.", next_nodes: [:n3d]
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "Have OpenCV do the composition", next_nodes: [:n3d]
 
 Env[:n3a] = VimNode.new "facedetect", session: "facedetect-1.session",
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "A simple program to detect faces", next_nodes: [:n3b, :n3c]
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "A simple program to detect faces", next_nodes: [:n3b, :n3e]
 
-Env[:n3]  = TextNode.new PLACEHOLDER, 
-            background: "", next_text: "Ruby-c extensions", next_nodes: [:n3a]
 #tuatology
 Env[:n2]  = MarkdownNode.new "face_detection_in_ruby.markdown", 
-            background: "", next_text: "Face detection in ruby", next_nodes: [:n3, :n3a]
+            background: "", next_text: "Face detection in ruby", next_nodes: [:n3a]
 
 Env[:n1]  = MarkdownNode.new "keep_learning.markdown", 
             background: "", next_text: "Keep learning", next_nodes: [:n2, :n4, :n5]
