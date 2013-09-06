@@ -23,8 +23,7 @@ class CursesNode < Node
       cursing.each &:call
     end
 
-    show_next_options
-    go next_choice
+    go @next_nodes.first #ncurses node only accepts one next node
   end
 
   def init_screen

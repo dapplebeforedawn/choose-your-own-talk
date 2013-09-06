@@ -9,9 +9,6 @@ TOC_NODE    = :toc
 NODESTACK   = [] # so we can rescue if the program blows up
 Env         = {}
 
-Env[:x1]  = TitleNode.new(
-            background: "", next_text: "Ruby, without the rails", next_nodes: [])
-
 Env[:n5]  = MarkdownNode.new "without_rails.markdown", 
             background: "", next_text: "Ruby, without the rails", next_nodes: []
 
@@ -64,9 +61,12 @@ Env[:n2]  = MarkdownNode.new "face_detection_in_ruby.markdown",
 Env[:n1]  = MarkdownNode.new "keep_learning.markdown", 
             background: "", next_text: "Keep learning", next_nodes: [:n2, :n4, :n5]
 
-#hugemistake
 Env[:n0]  = MarkdownNode.new "about.markdown", 
-            background: "", next_text: "The Beginning", next_nodes: [:n1]
+            background: "huge_mistake.jpg", next_text: "The Beginning", next_nodes: [:n1]
+
+Env[:t1]  = TitleNode.new(
+            background: "", next_text: "The Title Screen", next_nodes: [:n0])
+
 
 Env[:toc] = TextNode.new "Table of Contents: ", 
             background: "", next_text: "Table of contents", next_nodes: Env.keys
