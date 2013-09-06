@@ -9,6 +9,9 @@ TOC_NODE    = :toc
 NODESTACK   = [] # so we can rescue if the program blows up
 Env         = {}
 
+Env[:x1]  = TitleNode.new(
+            background: "", next_text: "Ruby, without the rails", next_nodes: [])
+
 Env[:n5]  = MarkdownNode.new "without_rails.markdown", 
             background: "", next_text: "Ruby, without the rails", next_nodes: []
 
@@ -27,7 +30,7 @@ Env[:p01] = VimNode.new "Process-spawn",
             background: "ghost-in-the-shell-fingers.jpg", next_text: "Process.spawn", next_nodes: []
 
 Env[:n3e] = VimNode.new "facedetect", session: "facedetect-4.session",
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz movie?", next_nodes: [:p01])
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz movie?", next_nodes: [:p01]
 #next, pipeline, process span, io pipes, redirection, array pack--|
 #                                                                 |-bits/bytes/chars
 
