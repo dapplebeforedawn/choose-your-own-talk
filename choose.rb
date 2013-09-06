@@ -23,16 +23,23 @@ Env[:g02] = VimNode.new "working-with-bytes/working-with-bytes.markdown",
             parting_words: "Type 'back'",
             background: "jim.png", next_text: "Working with Bytes", next_nodes: []
 
+Env[:p03] = StreamsOfTextNode.new(
+            background: "stream_quote.jpg", next_text: "Streams of Text", next_nodes: [])
+
+Env[:p02] = VimNode.new "fifo",
+            background: "fifo.jpg", next_text: "| Pipelining |", next_nodes: []
+
+#TO BE IMPLEMENTED
 Env[:p01] = VimNode.new "Process-spawn",
             background: "ghost-in-the-shell-fingers.jpg", next_text: "Process.spawn", next_nodes: []
 
-Env[:n3e] = VimNode.new "facedetect", session: "facedetect-4.session",
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz movie?", next_nodes: [:p01]
+Env[:n3i] = VimNode.new "facedetect", session: "facedetect-4.session",
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz movie?", next_nodes: [:p01, :p02, :p03]
 #next, pipeline, process span, io pipes, redirection, array pack--|
 #                                                                 |-bits/bytes/chars
 
 Env[:n3e] = VimNode.new "facedetect", session: "facedetect-3.session",
-            background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz live image?", next_nodes: [:p01, :g02, :ne3]
+            background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz live image?", next_nodes: [:p01, :g02, :n3i]
 
 Env[:n3h] = PendingNode.new(
             background: "", next_text: "Writing Ruby-c extensions", next_nodes: [])

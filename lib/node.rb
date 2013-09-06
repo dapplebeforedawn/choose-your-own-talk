@@ -23,11 +23,15 @@ class Node
       ('a'..'z').to_a
     end
 
+    def back
+      NODESTACK.pop(2)[0]
+    end
+
     def next_choice
       print "Where do you want to go?: "
       input = $stdin.gets.chomp #bare `gets` will try to consume ARGV too
-      return TOC_NODE            if input == TOC
-      return NODESTACK.pop(2)[0] if input == BACK
+      return TOC_NODE   if input == TOC
+      return back       if input == BACK
       
       unless next_node_ind = letters.index(input)
         puts "Let's try that again"
