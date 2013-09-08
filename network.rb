@@ -32,14 +32,11 @@ module Network
     env[:p02] = VimNode.new "fifo",
                 background: "fifo.jpg", next_text: "| Pipelining |", next_nodes: []
 
-    #TO BE IMPLEMENTED
-    env[:p01] = VimNode.new "Process-spawn",
-                background: "ghost-in-the-shell-fingers.jpg", next_text: "Process.spawn", next_nodes: []
+    env[:p01] = VimNode.new "process-spawn",
+                background: "spawn.jpg", next_text: "When to Spawn, when to back-whack", next_nodes: [:p03, :p02]
 
     env[:n3i] = VimNode.new "facedetect", session: "facedetect-4.session",
                 background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz movie?", next_nodes: [:p01, :p02, :p03, :g03]
-    #next, pipeline, process span, io pipes, redirection, array pack--|
-    #                                                                 |-bits/bytes/chars
 
     env[:n3e] = VimNode.new "facedetect", session: "facedetect-3.session",
                 background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz live image?", next_nodes: [:p01, :g02, :n3i]

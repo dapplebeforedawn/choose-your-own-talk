@@ -28,7 +28,7 @@ def to_json
       traverse.call(assoc_ident)
     end
   end
-  traverse.call(root_ident)
+  Env.keys.each { |key| traverse.call(key) }
 
   { rootId: root_ident, edges: edge_list, nodes: nodes }.to_json
 end
@@ -77,7 +77,7 @@ __END__
 
       layout = Viva.Graph.Layout.forceDirected graph,
         springLength : 10
-        springCoeff  : 0.00005
+        springCoeff  : 0.000005
         dragCoeff    : 0.02
         gravity      : -10
 
