@@ -5,6 +5,9 @@ module Network
   def self.graph
     env         = {}
 
+    env[:n6]  = MarkdownNode.new "without_rails.markdown", 
+                background: "", next_text: "Ruby, without the rails", next_nodes: []
+
     env[:n5]  = MarkdownNode.new "without_rails.markdown", 
                 background: "", next_text: "Ruby, without the rails", next_nodes: []
 
