@@ -4,6 +4,8 @@ class Node
   require 'stringio'
 
   attr_accessor :next_text
+  attr_reader   :next_nodes
+
   def initialize options={}
     @parting_words = options[:parting_words] || "" 
     @background    = options[:background]    || nil
