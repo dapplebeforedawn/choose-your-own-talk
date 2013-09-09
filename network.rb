@@ -1,5 +1,3 @@
-require
-
 module Network
   class NodeMutation < StandardError; end
   def self.graph
@@ -15,10 +13,10 @@ module Network
       end
     end
 
-    OpenCVTopic.add_to_env(env)
-    MakeAGameTopic.add_to_env(env)
-    HardwareTopic.add_to_env(env)
-    ThisTalkTopic.add_to_env(env)
+    OpenCVTopic.add_to_env    env
+    MakeAGameTopic.add_to_env env
+    HardwareTopic.add_to_env  env
+    ThisTalkTopic.add_to_env  env
 
     env[:n5]  = MarkdownNode.new "without_rails.markdown", 
                 background: "", next_text: "Ruby, without the rails", next_nodes: []
@@ -51,7 +49,7 @@ module Network
                 background: "", next_text: "Writing Ruby-c extensions", next_nodes: [])
 
     env[:toc]  = MarkdownNode.new "keep_learning.markdown", 
-                background: "", next_text: "Keep learning", next_nodes: [:n2, :n4, :n5]
+                background: "", next_text: "Keep learning", next_nodes: [:n2, :n4, :n5, :mg1]
 
     env[:n0]  = MarkdownNode.new "about.markdown", 
                 background: "huge_mistake.jpg", next_text: "The Beginning", next_nodes: [:toc]

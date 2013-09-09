@@ -1,6 +1,6 @@
 class Node
-  #GHOST_SPEED = 0.002
-  GHOST_SPEED = 0.02
+  GHOST_SPEED = 0.002
+  #GHOST_SPEED = 0.02
   require 'stringio'
 
   attr_accessor :next_text
