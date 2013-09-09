@@ -1,5 +1,5 @@
 #! /usr/bin/env ruby
-require './network'
+require_relative 'initializer'
 
 at_exit { p NODESTACK; `./term.sh` }
 
