@@ -1,5 +1,5 @@
 #! /usr/bin/env ruby
-require_relative 'initializer'
+require './network'
 
 at_exit { p NODESTACK; `./term.sh` }
 
@@ -10,3 +10,5 @@ Env         = Network.graph
 
 NODESTACK << START_NODE
 Env[START_NODE].show
+
+# scripts/graph/graph.rb html > tempfile.html; open tempfile.html; sleep 5; rm tempfile.htm

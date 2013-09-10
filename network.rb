@@ -1,3 +1,4 @@
+require_relative 'initializer'
 module Network
   class NodeMutation < StandardError; end
   def self.graph
@@ -17,12 +18,6 @@ module Network
     MakeAGameTopic.add_to_env env
     HardwareTopic.add_to_env  env
     ThisTalkTopic.add_to_env  env
-
-    env[:n5]  = MarkdownNode.new "without_rails.markdown", 
-                background: "", next_text: "Ruby, without the rails", next_nodes: []
-
-    env[:n4]  = MarkdownNode.new "hardware_toys.markdown", 
-                background: "", next_text: "Hardware hacking", next_nodes: []
 
     env[:g01] = MarkdownNode.new "what-is-arity.markdown",
                 parting_words: "Type 'back'",
@@ -50,6 +45,12 @@ module Network
 
     env[:n3h] = PendingNode.new(
                 background: "", next_text: "Writing Ruby-c extensions", next_nodes: [])
+
+    env[:n5]  = MarkdownNode.new "without_rails.markdown", 
+                background: "", next_text: "The presentation about this presentation", next_nodes: []
+
+    env[:n4]  = MarkdownNode.new "hardware_toys.markdown", 
+                background: "", next_text: "Hardware hacking: building keg-motron", next_nodes: []
 
     env[:toc]  = MarkdownNode.new "keep_learning.markdown", 
                 background: "", next_text: "Keep learning", next_nodes: [:n2, :n4, :n5, :mg1]
