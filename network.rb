@@ -36,13 +36,16 @@ module Network
                 parting_words: "Learn more about working with bytes or 'back'",
                 background: "jim.png", next_text: "Access the Bytes in Ruby", next_nodes: [:g02]
 
+    env[:g04] = VimNode.new "kill-pipe", session: true,
+                background: "kill_pipe.png", next_text: "kill pipe, wat?!", next_nodes: [:p02, :mga]
+
     env[:p03] = StreamsOfTextNode.new(
                 background: "stream_quote.jpg", next_text: "Streams of Text", next_nodes: [])
 
-    env[:p02] = VimNode.new "fifo",
-                background: "fifo.jpg", next_text: "| Pipelining |", next_nodes: []
+    env[:p02] = VimNode.new "fifo", session: true,
+                background: "kill_pipe.png", next_text: "| Pipelining |", next_nodes: []
 
-    env[:p01] = VimNode.new "process-spawn",
+    env[:p01] = VimNode.new "process-spawn", session: true,
                 background: "spawn.jpg", next_text: "When to Spawn, when to back-whack", next_nodes: [:p03, :p02]
 
     env[:n3h] = PendingNode.new(

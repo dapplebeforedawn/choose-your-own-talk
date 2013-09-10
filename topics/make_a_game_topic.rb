@@ -1,7 +1,13 @@
 module MakeAGameTopic
   def self.add_to_env(env)
+    env[:mgb]  = VimNode.new "a-game", session: "game-client-2.session",
+                 background: "john_e.png", next_text: "The Client - Rendering", next_nodes: [:mga]
+
+    env[:mga]  = VimNode.new "a-game", session: "lets-play.session",
+                 background: "space_invaders.jpg", next_text: "Let's play it", next_nodes: [:mgb, :g04, :toc]
+
     env[:mg9]  = VimNode.new "a-game", session: "game-client-1.session",
-                 background: "john_e.png", next_text: "The Client - Cacluation Loop", next_nodes: [:mga]
+                 background: "john_e.png", next_text: "The Client - Cacluation Loop", next_nodes: [:mga, :mgb]
 
     env[:mg8]  = VimNode.new "a-game", session: "game-server-2.session",
                  background: "rose.png", next_text: "The Server - Cacluation Loop", next_nodes: [:mg9]
