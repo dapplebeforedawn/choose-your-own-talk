@@ -46,14 +46,8 @@ module Network
     env[:n3h] = PendingNode.new(
                 background: "", next_text: "Writing Ruby-c extensions", next_nodes: [])
 
-    env[:n5]  = MarkdownNode.new "without_rails.markdown", 
-                background: "", next_text: "The presentation about this presentation", next_nodes: []
-
-    env[:n4]  = MarkdownNode.new "hardware_toys.markdown", 
-                background: "", next_text: "Hardware hacking: building keg-motron", next_nodes: []
-
     env[:toc]  = MarkdownNode.new "keep_learning.markdown", 
-                background: "", next_text: "Keep learning", next_nodes: [:n2, :n4, :n5, :mg1]
+                background: "", next_text: "Keep learning", next_nodes: [:n2, :hh1, :tt1, :mg1]
 
     env[:n0]  = MarkdownNode.new "about.markdown", 
                 background: "huge_mistake.jpg", next_text: "The Beginning", next_nodes: [:toc]

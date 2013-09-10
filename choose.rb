@@ -11,4 +11,6 @@ Env         = Network.graph
 NODESTACK << START_NODE
 Env[START_NODE].show
 
-# scripts/graph/graph.rb html > tempfile.html; open tempfile.html; sleep 5; rm tempfile.htm
+# update the graph file for the "About this Presentation" topic
+`scripts/graph/graph.rb html > scripts/graph/sample.html`
+# scripts/graph/graph.rb html > tempfile.html; open tempfile.html; sleep 5; rm tempfile.html

@@ -1,7 +1,7 @@
 module OpenCVTopic
   def self.add_to_env(env)
     env[:n3i] = VimNode.new "facedetect", session: "facedetect-4.session",
-                background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz movie?", next_nodes: [:p01, :p02, :p03, :g03]
+                background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz movie?", next_nodes: [:p01, :p02, :p03, :g03, :toc]
 
     env[:n3e] = VimNode.new "facedetect", session: "facedetect-3.session",
                 background: "ghost-in-the-shell-fingers.jpg", next_text: "I can haz live image?", next_nodes: [:p01, :g02, :n3i]
