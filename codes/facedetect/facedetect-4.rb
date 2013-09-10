@@ -12,7 +12,7 @@ cv_over_image   = IplImage.load OVER_IMAGE, IMAGE_MASK
 rd, wr          = IO.pipe
 
 fork do
-  rd.lines(IMAGE_SEP) do |image_string|
+  rd.each_line(IMAGE_SEP) do |image_string|
     cv_image = IplImage.decode(image_string.bytes.to_a)
     
     Cover.faces!(cv_image, cv_over_image)
@@ -21,5 +21,5 @@ fork do
   end
 end
 
-pid = spawn "#{CAMERA} - -t 0.2",  out: wr
+pid = spawn "#{CAMERA} -d \"Logitech Camera\" - -t 0.2",  out: wr
 Process.wait pid

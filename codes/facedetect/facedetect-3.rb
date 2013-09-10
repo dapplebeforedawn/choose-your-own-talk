@@ -10,7 +10,7 @@ OVER_IMAGE      = 'images/laughing_man.png'
 OUTPUT          = 'fd3-output.jpg'
 cv_over_image   = IplImage.load OVER_IMAGE, IMAGE_MASK
 
-image_data = `#{CAMERA} -`
+image_data = `#{CAMERA} -d "Logitech Camera" -`
 cv_image   = IplImage.decode(image_data.bytes.to_a)
 
 # Block of code for face detection and overlay moved to
