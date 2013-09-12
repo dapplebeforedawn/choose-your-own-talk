@@ -34,6 +34,9 @@ module Network
     env[:g04] = VimNode.new "kill-pipe", session: true,
                 background: "kill_pipe.png", next_text: "kill pipe, wat?!", next_nodes: [:p02, :mga]
 
+    env[:p04] = PendingNode.new(
+                background: "", next_text: "What's UDP?", next_nodes: [])
+
     env[:p03] = StreamsOfTextNode.new(
                 background: "stream_quote.jpg", next_text: "Streams of Text", next_nodes: [])
 
