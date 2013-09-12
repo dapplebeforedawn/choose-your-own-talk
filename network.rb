@@ -52,8 +52,11 @@ module Network
     env[:toc]  = MarkdownNode.new "keep_learning.markdown", 
                 background: "", next_text: "Keep learning", next_nodes: [:n2, :hh1, :tt1, :mg1]
 
+    env[:t2]  = HugeMistakeNode.new(
+                background: "huge_mistake.jpg", next_text: "Get Started", next_nodes: [:toc])
+
     env[:n0]  = MarkdownNode.new "about.markdown", 
-                background: "huge_mistake.jpg", next_text: "The Beginning", next_nodes: [:toc]
+                background: "", next_text: "The Beginning", next_nodes: [:t2]
 
     env[:t1]  = TitleNode.new(
                 background: "", next_text: "The Title Screen", next_nodes: [:n0])

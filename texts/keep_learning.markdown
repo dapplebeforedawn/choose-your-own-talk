@@ -3,6 +3,6 @@
 
 - PHP, Java, .Net, Windows, Textile Weaving, Ruby?
 
-- Whatever you're doing, it's about to become un-cool.
+- NodeJS and Exlir are stealing our skinny jeans!
 
-- Learn something new today, or perish.
+## Learn something with classic style:

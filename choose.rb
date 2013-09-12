@@ -3,7 +3,7 @@ require './network'
 
 at_exit { p NODESTACK; `./term.sh` }
 
-START_NODE  = (ARGV[0] || :n0).to_sym
+START_NODE  = (ARGV[0] || :t1).to_sym
 TOC_NODE    = :toc
 NODESTACK   = [] # so we can rescue if the program blows up
 Env         = Network.graph
