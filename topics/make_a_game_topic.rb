@@ -3,9 +3,6 @@ module MakeAGameTopic
     env[:mgb]  = VimNode.new "a-game", session: "game-client-2.session",
                  background: "john_e.png", next_text: "The Client - Rendering", next_nodes: [:mga]
 
-    env[:mga]  = VimNode.new "a-game", session: "lets-play.session",
-                 background: "space_invaders.jpg", next_text: "Let's play it", next_nodes: [:mgb, :g04, :toc]
-
     env[:mg9]  = VimNode.new "a-game", session: "game-client-1.session",
                  background: "john_e.png", next_text: "The Client - Cacluation Loop", next_nodes: [:mga, :mgb]
 
@@ -15,8 +12,11 @@ module MakeAGameTopic
     env[:mg7]  = VimNode.new "a-game", session: "game-server-1.session",
                  background: "rose.png", next_text: "The Server - Listen Loop", next_nodes: [:mg8]
 
+    env[:mga]  = VimNode.new "a-game", session: "lets-play.session",
+                 background: "space_invaders.jpg", next_text: "Let's play it", next_nodes: [:mg7, :g04, :toc]
+
     env[:mg6]  = MarkdownNode.new "game-spec-2.markdown", 
-                 background: "space_invaders.jpg", next_text: "An Outline, how it do it", next_nodes: [:mg7]
+                 background: "space_invaders.jpg", next_text: "An Outline, how it do it", next_nodes: [:mga, :mg7]
 
     env[:mg5]  = MarkdownNode.new "game-spec.markdown", 
                  background: "space_invaders.jpg", next_text: "The Spec, what it do", next_nodes: [:mg6]
