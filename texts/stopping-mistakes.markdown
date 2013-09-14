@@ -1,7 +1,7 @@
 # Stopping Mistakes
-==================
 
 The node hash (`env`) has been modified to raise an expection if a key is mutated
+
 ```ruby
 module Network
   class NodeMutation < StandardError; end

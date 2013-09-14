@@ -1,10 +1,23 @@
+GIT
+  remote: git://github.com/dapplebeforedawn/tty_markdown.git
+  revision: 0834637c714a30f333964bb9ce7fc2db2e05c277
+  specs:
+    tty_markdown (0.0.1)
+      colorize (= 0.5.8)
+      redcarpet (= 3.0.0)
+      syntax (= 1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    colorize (0.5.8)
     rack (1.5.2)
+    redcarpet (3.0.0)
+    syntax (1.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   rack
+  tty_markdown!

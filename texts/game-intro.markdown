@@ -1,9 +1,9 @@
 # Build a Multiplayer, Realtime Game in Ruby
-============================================
 
 By show of excited faces:
 
 How many of you first got interested in programming through games?
+
   - Prince of Persia?
   - Blake Stone/Wolfenstein 3D?
   - Comander Keen?

@@ -1,5 +1,4 @@
 # Face Detection, Detects a Face
-================================
 
 Lets build a simple program to recognize faces in an image.
 

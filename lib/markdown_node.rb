@@ -1,4 +1,6 @@
 require 'pathname'
+require 'redcarpet'
+require 'tty_markdown'
 class MarkdownNode < Node
 
   def initialize filename, options={}
@@ -8,7 +10,11 @@ class MarkdownNode < Node
 
   def show
     @background.display
-    data = File.readlines @filename
+    markdown = ::Redcarpet::Markdown.new(::Redcarpet::Render::ColorDown, fenced_code_blocks: true)
+    markeddown = markdown.render File.read(@filename)
+    data = markeddown.lines
+    #data = File.readlines @filename
+
     data.extend GhostWriterCollection
     data.ghost
 

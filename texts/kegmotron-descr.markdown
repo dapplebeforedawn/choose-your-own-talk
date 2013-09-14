@@ -1,5 +1,4 @@
 # Kegmotron: what it do?
-========================
 
 Let's build a piece of hardware that we can place under a keg of beer to measure it's weight, and there-by volume.
 
