@@ -15,6 +15,6 @@ I'll start the server:
 The server is running at:
   ```bash
   echo "The server is running at: `ifconfig | awk '/192/ { print $2 }'`"
-  echo "~/game-client/client.rb xxaa -i `ifconfig | awk '/191/ { print $2 }'`"
+  echo "~/game-client/client.rb xxaa -i `ifconfig | awk '/192/ { print $2 }'`"
   echo "          <replace xxaa with a ship of your choosing>"
   ```
