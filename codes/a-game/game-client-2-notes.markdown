@@ -1,6 +1,6 @@
 # Notes
 =======
->ncurses, a blast from the past, does all the heavy lifting.
+>curses, a blast from the past, does all the heavy lifting.
 
  - Methods not intened for external consumption are marked 'private'.  This gives me confidence when refactoring.
  - Ruby's closures (lambda in this case) make the code for colorizing the players ship very clean.

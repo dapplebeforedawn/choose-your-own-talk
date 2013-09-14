@@ -1,17 +1,14 @@
 require 'curses'
 
-Curses.init_screen
-Curses.start_color
-Curses.noecho
-Curses.stdscr.keypad(true) # enable arrow keys
-at_exit { Curses.close_screen }
-
 class Render
-  COLOR_OFF       = 0
-  DAMAGE_COLOR    = 1
-  SCORE_COLOR     = 2
+  Curses.init_screen
+  Curses.start_color
+  Curses.noecho
+  DAMAGE_COLOR  = 100
+  SCORE_COLOR   = 200
   Curses.init_pair DAMAGE_COLOR, Curses::COLOR_WHITE, Curses::COLOR_RED
   Curses.init_pair SCORE_COLOR,  Curses::COLOR_WHITE, Curses::COLOR_BLUE
+  at_exit { Curses.close_screen }
 
   def initialize(win, log, new_state, old_state, ident)
     @win        = win
