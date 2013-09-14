@@ -9,19 +9,24 @@ class GameSever
   SERVER_PORT     = 9000
   CYCLE_TIME      = 1
 
-  CLIENTS    = [{}]
+  @client_updates = [{}]
   Thread.new do
     Socket.udp_server_loop(SERVER_PORT) do |msg, msg_src|
+      # Get data about the client
       remote  = msg_src.remote_address
       ip      = remote.ip_address
       data    = JSON.parse(msg)
       port    = data["port"]
-      clients = CLIENTS.last.clone
+
+      # Make a new client to keep track of
       client  = Client.new data["conf"], ip, port, ClientReq.new, data["win_width"], data["win_height"]
       key     = client.ident
+
+      # Copy the last client state, update and push it.
+      clients = @client_states.last.clone
       clients[key] ||= client
       clients[key].req.add_mvmts data["mvmt"]
-      CLIENTS << clients
+      @client_states << clients
     end
   end
 

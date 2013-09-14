@@ -9,15 +9,15 @@ class GameSever
   SERVER_PORT     = 9000
   CYCLE_TIME      = 1
 
-  CLIENTS    = [{}]
+  @client_updates = [{}]
   Thread.new do
     # Placeholder for client listen loop
   end
 
-  STATES  = [{}]
+  @game_states  = [{}]
   def self.calc_state
-    clients = CLIENTS.last.clone
-    states  = STATES.last.clone
+    clients = @client_states.last.clone
+    states  = @game_states.last.clone
     
     states_inited = clients.keys.inject(states) do |memo, client_ip|
       next memo if memo[client_ip]
@@ -30,7 +30,7 @@ class GameSever
     scored_clients = moved_clients.merge(moved_clients) do |key, ov|
       ov.calc_colision(moved_clients)
     end
-    STATES << scored_clients
+    @game_states << scored_clients
     scored_clients
   end
 
