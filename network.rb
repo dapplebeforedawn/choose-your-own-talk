@@ -58,8 +58,14 @@ module Network
     env[:n0]  = MarkdownNode.new "about.markdown", 
                 background: "", next_text: "The Beginning", next_nodes: [:t2]
 
+    env[:cm]  = CoverMySlide.new(
+                background: "", next_text: "CoverMySlide", next_nodes: [:n0])
+
+    env[:cl]  = CoverMyMeds.new(
+                background: "", next_text: "CoverMySlide", next_nodes: [:cm])
+
     env[:t1]  = TitleNode.new(
-                background: "", next_text: "The Title Screen", next_nodes: [:n0])
+                background: "", next_text: "The Title Screen", next_nodes: [:cl])
 
     #env[:idx] = TextNode.new "Index, all the things: ", 
                 #background: "", next_text: "Table of contents", next_nodes: env.keys
