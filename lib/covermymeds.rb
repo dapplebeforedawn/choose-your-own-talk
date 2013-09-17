@@ -6,7 +6,7 @@ class CoverMyMeds < CursesNode
   RUBINE_COLOR    = 30
   def cursing
     Curses.start_color
-    Curses.init_color ORANGE, 255, 250, 0
+    Curses.init_color ORANGE, 254, 254, 0
     Curses.init_color RUBINE, 236, 14,  110
     Curses.init_pair  ORANGE_COLOR, ORANGE, Curses::COLOR_BLACK
     Curses.init_pair  RUBINE_COLOR, RUBINE, Curses::COLOR_BLACK
