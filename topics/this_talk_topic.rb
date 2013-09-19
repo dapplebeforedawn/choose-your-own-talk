@@ -9,7 +9,6 @@ module ThisTalkTopic
 
     env[:tt3]  = MarkdownNode.new "stopping-mistakes.markdown",
                  background: "", next_text: "How do you stop mistakes?", next_nodes: [:tt4]
-j
     env[:tt2]  = VimNode.new "this-presentation", session: "network.session",
                  background: "", next_text: "How does it work?", next_nodes: [:tt3]
 
